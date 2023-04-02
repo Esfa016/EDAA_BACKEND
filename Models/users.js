@@ -16,10 +16,9 @@ const user_schema = mongoose.Schema({
         type:String,
         required:true
     },
-    applied_for:{
+    youtube_link:{
         type:String,
         required:true
-    },
-    
+    }
 });
-module.exports = users = mongoose.model("users",users) 
+module.exports = users = mongoose.model("users",user_schema) 
