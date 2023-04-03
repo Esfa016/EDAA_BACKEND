@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const {create} = require('../Controllers/users_controller')
-const {createUserMiddleware} = require('../Middlewares/user_middleware');
+const {create,login} = require('../Controllers/users_controller')
+const {createUserMiddleware,loginMiddleware} = require('../Middlewares/user_middleware');
 router.post('/',createUserMiddleware,create)
+router.post('/login',loginMiddleware,login)
 module.exports = router;
