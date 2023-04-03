@@ -1,4 +1,5 @@
 const date = new Date();
+const expiry = date.setFullYear(date.getFullYear())
 const mongoose = require('mongoose');
 const status = {
     active:'active',
@@ -7,14 +8,14 @@ const status = {
 const license_schema = mongoose.Schema({
     issue_Date:{
         type:Date,
-        default:Date.now(date.getFullYear(),date.getMonth(),date.getDate())
+        default:date.toDateString()
     },
     expiry_date:{
       type:Date,
-      default:Date(date.getFullYear()+2 ,date.getMonth(),date.getDate())
+      default:date.setFullYear(date.getFullYear() +2)
     },
     member:{
-        type:mongoose.Types.ObjectId, ref:'users',
+        type:mongoose.Types.ObjectId, ref:'members',
         required:true
     },
     status:{
