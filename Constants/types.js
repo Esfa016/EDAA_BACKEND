@@ -4,4 +4,10 @@ const allowed_types={
     traditional_choerographer:"Traditional Choreographer",
     modern_choerographer:"Modern Choreographer"
 }
-module.exports = allowed_types;
+const status={
+    pending:'pending',
+    accepted:'accepted',
+    declined:'declined'
+
+}
+module.exports = {allowed_types,status};

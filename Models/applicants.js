@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const allowed_types  =  require('../Constants/types')
+const {allowed_types}  =  require('../Constants/types')
+
 const request_status = {
     pending:'pending',
     accepted:'accepted',
