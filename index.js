@@ -3,12 +3,13 @@ const app = express();
 const user_route =  require('./Routes/user_routes')
 const mongoose = require('mongoose')
 require('dotenv').config()
+const multer = require('multer');
 const cors = require('cors')
 const rateLimiter = require('express-rate-limit');
 const uploader = require('express-fileupload');
 const PORT = process.env.PORT || 4000
 app.use(express.json())
-app.use(uploader({limits:{fileSize:10000000},abortOnLimit:true}))
+app.use(uploader({limits:{fileSize:10000000},abortOnLimit:true,useTempFiles:true,tempFileDir:'/tmp'}))
 app.use(cors())
 app.use('/users',user_route)
 mongoose.connect(process.env.MOGOOSE_URL).then(()=>{
