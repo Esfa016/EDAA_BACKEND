@@ -14,6 +14,12 @@ const helmet = require('helmet');
 const xss =  require('xss-clean');
 //const morgan = require('morgan');
 //app.use(morgan('short'))
+const limiter = rateLimiter({
+max:100,
+windowsMs:60*60*1000,
+message:'too many requests. please try again after one hour'
+})
+app.use(limiter)
 app.use(helmet())
 app.use(xss())
 app.use(express.json())
