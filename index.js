@@ -2,6 +2,7 @@ const express = require('express')
 const app = express();
 const user_route =  require('./Routes/user_routes')
 const mongoose = require('mongoose')
+const members = require('./Routes/members_routes')
 require('dotenv').config()
 const applicants_route = require('./Routes/applicants.routes')
 const cors = require('cors')
@@ -15,6 +16,7 @@ app.use(cors())
 app.use('/users',user_route)
 app.use('/applicants',applicants_route)
 app.use('/license',license)
+app.use('/members',members)
 mongoose.connect(process.env.MOGOOSE_URL).then(()=>{
     app.listen(PORT,()=>{
         console.log(`server up and runing on ${PORT}`)
