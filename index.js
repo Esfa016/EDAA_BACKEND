@@ -10,6 +10,12 @@ const license =  require('./Routes/license_routes')
 const rateLimiter = require('express-rate-limit');
 const uploader = require('express-fileupload');
 const PORT = process.env.PORT || 4000
+const helmet = require('helmet');
+const xss =  require('xss-clean');
+//const morgan = require('morgan');
+//app.use(morgan('short'))
+app.use(helmet())
+app.use(xss())
 app.use(express.json())
 app.use(uploader({limits:{fileSize:10000000},abortOnLimit:true,useTempFiles:true,tempFileDir:'/tmp'}))
 app.use(cors())
