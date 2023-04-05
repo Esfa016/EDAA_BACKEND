@@ -1,4 +1,5 @@
 const router = require('express').Router()
 const {getAllMember} = require('../Controllers/members_controller')
-router.get('/',getAllMember)
+const auth = require('../Middlewares/auth_middleware')
+router.get('/',  auth.adminAuthorizer, getAllMember)
 module.exports = router;

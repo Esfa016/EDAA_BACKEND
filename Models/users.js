@@ -19,6 +19,10 @@ const user_schema = mongoose.Schema({
     youtube_link:{
         type:String,
         required:true
+    },
+    role:{
+        type:String,
+        default:'user'
     }
 });
 module.exports = users = mongoose.model("users",user_schema) 
