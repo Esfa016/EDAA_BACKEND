@@ -2,7 +2,11 @@ const news = require("../Models/news");
 const addNews = async (req, res) => {
   try {
     const data = await news.create(req.body);
-    return res.status(201).send();
+    return res.status(201).json({
+      message: "successfully created news",
+      data: data,
+      success:true
+    });
   } catch (e) {
     return res.status(500).send(e);
   }
@@ -50,4 +54,7 @@ const deleteNews = async (req, res) => {
                     return res.status(500).send(e)
           }
           
+}
+module.exports = {
+  addNews,getNews,updateNews,deleteNews
 }

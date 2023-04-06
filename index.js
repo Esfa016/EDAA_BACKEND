@@ -6,13 +6,15 @@ const members = require('./Routes/members_routes')
 require('dotenv').config()
 const events = require('./Routes/events_routes')
 const applicants_route = require('./Routes/applicants.routes')
+const news = require('./Routes/news_routes')
 const cors = require('cors')
 const license =  require('./Routes/license_routes')
 const rateLimiter = require('express-rate-limit');
 const uploader = require('express-fileupload');
 const PORT = process.env.PORT || 4000
 const helmet = require('helmet');
-const xss =  require('xss-clean');
+const xss = require('xss-clean');
+
 //const morgan = require('morgan');
 //app.use(morgan('short'))
 const limiter = rateLimiter({
@@ -30,7 +32,9 @@ app.use('/users',user_route)
 app.use('/applicants',applicants_route)
 app.use('/license',license)
 app.use('/members',members)
-app.use('/events',events)
+app.use('/events', events)
+app.use('/news', news)
+app.use('*',(req,res)=>res.status(404).send('Not found'))
 mongoose.connect(process.env.MOGOOSE_URL).then(()=>{
     app.listen(PORT,()=>{
         console.log(`server up and runing on ${PORT}`)
